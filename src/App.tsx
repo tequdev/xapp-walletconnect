@@ -12,10 +12,6 @@ function App() {
   // Step 2 - Once initialized, set up wallet connect event manager
   useWalletConnectEventsManager(initialized);
 
-  if (!initialized) {
-    return <></>;
-  }
-
   return (
     <div style={{ minHeight: "100vh" }}>
       <Text
@@ -26,8 +22,12 @@ function App() {
       >
         Connect Wallet
       </Text>
-      <WalletConnect />
-      <Modal />
+      {initialized &&
+        <>
+          <WalletConnect />
+          <Modal />
+        </>
+      }
     </div>
   );
 }
